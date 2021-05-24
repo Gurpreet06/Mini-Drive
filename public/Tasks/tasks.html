@@ -1,0 +1,166 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../FFolders-master/FFolders-master/css/ffolders.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!---CSS--->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/CreateFolder.css">
+    <!---JavaScript--->
+    <script src="../Javascript/time.js" defer></script>
+    <script src="../Javascript/mobile-menu.js"></script>
+    <script src="./createTask.js" defer></script>
+    <script src="../data/userTasks/usertasks.js" defer></script>
+    <title>File Manager</title>
+</head>
+
+<!----Templates---->
+
+<!--Tasks-->
+<template id="plantilla">
+    <div class="element" id="element">
+        <div class="eleinfo">
+            <h2 class="eleh2" id=taskName>{{Name}}</h2>
+            <p class="elep">{{des}}</p>
+        </div>
+        <div>
+            <ion-icon name="close-outline" class="cancel-task" onclick="delteEvents()"></ion-icon>
+        </div>
+    </div>
+</template>
+<!--END OF Tasks-->
+<!--Usr Name-->
+<template id="usrDetail">
+    <div class="dropdown">
+        <div class="dropdown-content1" style="top: -25px;">
+            <button class="downlaod">Log Out</button>
+        </div>
+        <div  style="cursor: pointer;">
+            <img src="{{UserImg}}" alt="">
+            <h3>{{UserName}} {{LastName}}</h3>
+        </div>
+    </div>
+
+</template>
+<!----END OF Usr Name---->
+
+<!----END OF Templates---->
+
+<body onload='inits()'>
+    <div class="wrapper">
+
+        <section class="side-menu">
+            <div id="mySidenav" class="sidenav">
+                <header class="header">Your Drive</header>
+                <a href="../index.html">Dashboard</a>
+                <a href="../Folders/folders.html">Folders</a>
+                <a href="../Files/files.html">Files</a>
+                <a href="../Tasks/tasks.html">Tasks</a>
+                <a href="#">Settings</a>
+            </div>
+            <div class="usrSecttion" id="usrSection"> </div>
+        </section>
+
+        <div class="upper-section">
+            <section class="search-input">
+                <span class="material-icons" id="handle" onclick="showMobileMenu(event)">drag_handle</span>
+                <div class="search-container">
+                    <input type="text" placeholder="Search.." name="search">
+                </div>
+                <div class="icon-mail">
+                    <ion-icon name="mail-outline" class="mail"></ion-icon>
+                    <ion-icon name="person-add-sharp" class="mail"></ion-icon>
+                </div>
+                <div class="time">
+                    <h2 id="tim">Today</h2>
+                    <h3 id="date">Today</h3>
+                </div>
+            </section>
+
+            <div id='menuSmall' class='mobile' onclick="hideMobileMenu(event)">
+                <div id="menuContainer">
+                    <div><a href="#">Dashboard</a></div>
+                    <div><a href="./Folders/folders.html">Folders</a></div>
+                    <div><a href="./Files/files.html">Files</a></div>
+                    <div><a href="./Tasks/tasks.html">Tasks</a> </div>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div style="width: 100%;">
+                    <div>
+                        <section class="task">
+                            <div class="">
+                                <h3 class="title">YOUR RECENT TASKS</h3>
+                            </div>
+                            <div class="control-Tasks" id="taks"> </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="tasks" id="tasks">
+                    <section class="task">
+                        <div class="btn">
+                            <div class="btntx" onclick="showMenu()">
+                                <ion-icon name="add-outline"></ion-icon>
+                                <h2 class="btnh2">Create A New Task</h2>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Create Folder-->
+    <div id="createBlur" onclick="hideMenu(event)">
+        <div id="createEvent">
+            <div class="wrapper1" id="wrapper">
+                <section class="form signup">
+                    <header>Create a new Task</header>
+                    <form action="#" autocomplete="off">
+                        <div class="name-details">
+                            <div class="field input">
+                                <div class="errortxt" id="errortxt">Please fill all input's</div>
+                                <label>Task Name</label>
+                                <input type="text" placeholder="Task Name" id="fname" required>
+                            </div>
+                            <div class="field input">
+                                <label>Task Description</label>
+                                <input type="text" placeholder="Task Description" id="fDescription" required>
+                            </div>
+                        </div>
+                        <div class="field button">
+                            <input type="submit" id="sendNow" value="Create Now">
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--End of Create Folder-->
+
+</body>
+
+<style>
+    .errortxt {
+        display: none;
+        color: #721c24;
+        padding: 8px 10px;
+        text-align: center;
+        border-radius: 5px;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+    }
+</style>
+
+</html>

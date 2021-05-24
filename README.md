@@ -1,0 +1,45 @@
+## Mini Drive
+
+Mini drive is a web application that allows us to upload folders, files and images, we can also delete files or folders. I also created a task manager that is implemented with this mini drive where we can create our daily tasks, this web application is built with Html, css, JavaScript and Nodejs.
+
+# Important!
+
+Do not use this software for commercial purposes
+
+## Design
+
+```
+https://www.uidesigndaily.com/posts/sketch-project-management-dashboard-projects-to-do-list-menu-day-1162
+```
+
+## Folder Icons
+```
+http://jlizanab.github.io/FFolders/ 
+```
+
+### Install node dependencies
+
+```
+npm install
+```
+
+### Start server
+
+```
+npm start
+```
+
+
+## Captures
+
+Templates
+
+![Photos](public/Images/Preview0.JPG)
+
+Templates
+
+![Photos](public/Images/Preview1.JPG)
+
+Templates
+
+![Photos](public/Images/Preview2.JPG)

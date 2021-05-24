@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./FFolders-master/FFolders-master/css/ffolders.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!---CSS--->
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/CreateFolder.css">
+    <!---JavaScript--->
+    <script src="./Javascript/time.js" defer></script>
+    <script src="./Javascript/mobile-menu.js"></script>
+    <script src="./Javascript/index.js" defer></script>
+    <script src="./data/UserData/listDir.js" defer></script>
+    <script src="./data/userTasks/usertasks.js" defer></script>
+    <script src="./data/UserData/listFiles.js" defer></script>
+    <title>File Manager</title>
+</head>
+
+<!----Templates---->
+
+<!--folders--->
+<template id="plantilla">
+    <a href="#">
+        <div class="ffolder small cyan">
+            <span class="foldr" id="idd">{{Name}}</span>
+        </div>
+    </a>
+</template>
+<!--END OF folders-->
+
+<!--Tasks-->
+<template id="templt">
+    <div class="element" id="element">
+        <div class="eleinfo">
+            <h2 class="eleh2">{{name}}</h2>
+            <p class="elep">{{des}}</p>
+        </div>
+        <div>
+            <ion-icon name="close-outline" class="cancel-task" onclick="delteEvents()"></ion-icon>
+        </div>
+    </div>
+</template>
+<!--END OF Tasks-->
+
+<!--Files-->
+<template id="filess">
+    <a href="http://localhost:8000/Files/files.html">
+        <div id="files">
+            <img src="./Files/fileImg.png" width="50%" class="fileImg">
+            <span class="span">{{Name}}</span>
+        </div>
+    </a>
+</template>
+<!--END OF Files-->
+
+<!--Usr Name-->
+<template id="usrDetail">
+    <div class="dropdown">
+        <div class="dropdown-content1" style="top: -25px;">
+            <button class="downlaod" onclick="location.reload(), localStorage.clear()">Log Out</button>
+        </div>
+        <div  style="cursor: pointer;">
+            <img src="{{UserImg}}" alt="">
+            <h3>{{UserName}} {{LastName}}</h3>
+        </div>
+    </div>
+
+</template>
+<!----END OF Usr Name---->
+
+<body onload='init()'>
+    <div class="wrapper">
+        <section class="side-menu">
+            <div id="mySidenav" class="sidenav">
+                <header class="header">Your Drive</header>
+                <a href="./index.html">Dashboard</a>
+                <a href="./Folders/folders.html">Folders</a>
+                <a href="./Files/files.html">Files</a>
+                <a href="./Tasks/tasks.html">Tasks</a>
+                <a href="#">Settings</a>
+            </div>
+        </section>
+        <div id='menuSmall' class='mobile' onclick="hideMobileMenu(event)">
+            <div id="menuContainer">
+                <div><a href="#">Dashboard</a></div>
+                <div><a href="./Folders/folders.html">Folders</a></div>
+                <div><a href="./Files/files.html">Files</a></div>
+                <div><a href="./Tasks/tasks.html">Tasks</a> </div>
+            </div>
+        </div>
+
+        <div class="upper-section">
+            <section class="search-input">
+                <span class="material-icons" id="handle" onclick="showMobileMenu(event)">drag_handle</span>
+                <div class="search-container">
+                    <input type="text" placeholder="Search.." name="search">
+                </div>
+                <div class="icon-mail">
+                    <ion-icon name="mail-outline" class="mail"></ion-icon>
+                    <ion-icon name="person-add-sharp" class="mail"></ion-icon>
+                </div>
+                <div class="time">
+                    <h2 id="tim">Today</h2>
+                    <h3 id="date">Today</h3>
+                </div>
+            </section>
+
+            <div id="innerHall">
+                <div class="middle-row">
+                    <section class="recentFolders">
+                        <div class="folder-container">
+                            <h3>RECENT FOLDERS</h3>
+                        </div>
+                        <div class="folders" id="folders"> </div>
+                    </section>
+
+                    <section class="projects">
+                        <div class="project-container">
+                            <h3>RECENT FILES</h3>
+                        </div>
+                        <div class="folders" id="saveFiles"> </div>
+                    </section>
+                </div>
+
+                <div class="tasks" id="tasks">
+                    <section class="task">
+                        <div class="task-container">
+                            <h3>YOUR TASKS</h3>
+                        </div>
+                        <div id="pendTasks"> </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

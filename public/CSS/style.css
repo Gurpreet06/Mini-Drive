@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+}
+
+
+.wrapper{
+    display: flex;
+  background: #fff;
+  max-width: 1200px;
+  height: 98%;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+}
+
+.header{
+    font-size: 22px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+#handle{
+    display: none;
+}
+
+/* Side menu */
+.side-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-right: 1px solid #e6e6e6;
+}
+
+.usrSecttion{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e6e6e6;
+    padding: 10px;
+}
+
+.sidenav{
+    padding: 35px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #949CB7;
+    display: flex;
+}
+  
+.sidenav a:hover {
+    color: #f1f1f1;
+    background: #506CAE;
+    border-radius: 20px;
+}
+  
+@media screen and (max-width: 900px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+
+    #handle{
+        display: block;
+        cursor: pointer;
+    }
+
+    #mySidenav{
+        display: none;
+    }
+
+    .wrapper {
+        display: block;
+        height: 0;
+    }
+    #innerHall{
+        flex-wrap: wrap;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    #tasks {
+        width: 100%;
+    }
+
+    .project-row{
+        flex-wrap: wrap;
+    }
+
+}
+/* End of side menu */
+
+
+
+.upper-section{
+    width: 100%;
+}
+
+/* Search Input */
+.search-input{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+
+.search-container {
+    padding: 20px;
+}
+  
+input[type=text] {
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.icon-mail {
+    font-size: 20px;
+}
+
+.mail{
+    margin-right: 25px;
+}
+.recentFolders{
+    padding: 30px;
+}
+.folder-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #e6e6e6;
+    height: 80px;
+    margin-bottom: 25px;
+}
+
+#innerHall{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* add folder btn */
+.add-folder{
+    width: 30%;
+}
+
+.btn {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 15px;
+    text-align: center;
+    margin-right: 20;
+}
+
+.btntx{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 13px;
+    height: 100px;
+}
+
+.btntx:hover{
+    border: solid 2px rgb(0, 155, 255);
+    color: rgb(0, 155, 255);
+    cursor: pointer;
+    background: #e8f6fe;
+}
+
+.btnh2{
+    font-size: 15px;
+    color: #555;
+    cursor: pointer;
+}
+/* End of add folder btn */
+
+
+/* Projects */
+.projects{
+    padding: 0px 30px;
+    margin-top: 30px;
+}
+.project-container{
+    padding: 20px;
+}
+.project-row{
+    display: flex;
+    justify-content: space-between;
+}
+.title{
+    color: #084298;
+    background-color: #cfe2ff;
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #b6d4fe;
+    font-size: 15px;
+    width: auto;
+}
+/* End of Projects */
+
+/* TASKS */
+.task{
+    padding: 30px;
+}
+.task-container{
+    padding: 20px;
+}
+
+.tasks{
+    width: 45%;
+}
+
+.element {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+.eleinfo {
+    padding: 22px;
+}
+
+.eleh2 {
+    color: #555;
+    cursor: pointer;
+}
+
+.elep {
+    color: #555;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cancel-task{
+    cursor: pointer;
+}
+
+.control-Tasks{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* End of Tasks */
+
+/* Files */
+
+#saveFiles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#files {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    cursor: pointer;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#saveFiles > a {
+    margin-bottom: 25px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.span {
+    width: 90%;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 15px;
+    white-space: nowrap;
+    background-color: #06BAEE;
+    color: #FFF;
+}
+
+.fileImg{
+        width: 30%;
+}
+
+/* END of  Files */
+#menuSmall {
+    background-color: rgba(200, 200, 200, 0.5);
+    backdrop-filter: saturate(200%) blur(5px);
+    display: none;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+#menuContainer {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    overflow: hidden;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    width: 75%;
+    will-change: transform;
+    z-index: 1000;
+}
+#menuSmall > #menuContainer > div {
+    border-bottom: 1px solid lightgrey;
+    padding: 0 2em;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+#menuSmall > #menuContainer > div:last-child {
+    margin-bottom: 10px;
+}
+#menuSmall > #menuContainer > div > a {
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+    
+}
+#menuSmall > #menuContainer > div > a:visited {
+    color: black;
+}

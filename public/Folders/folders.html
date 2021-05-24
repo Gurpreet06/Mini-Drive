@@ -1,0 +1,257 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../FFolders-master/FFolders-master/css/ffolders.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!---CSS--->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/CreateFolder.css">
+    <!---JavaScript--->
+    <script src="../data/UserData/userDir.js" defer></script>
+    <script src="../Javascript/mobile-menu.js"></script>
+    <script src="../data/UserData/userFile.js" defer></script>
+    <script src="../Javascript/time.js" defer></script>
+    <script src="./createFolder.js" defer></script>
+    <script src="./uploadFol.js" defer></script>
+    <script src="../data/UserData/listDir.js" defer></script>
+    <script src="../Javascript/downloadDirs.js"></script>
+    <script src="../Javascript/deleteDirs.js" defer></script>
+    <title>File Manager</title>
+</head>
+
+<!----Templates---->
+
+<!--folders-->
+<template id="plantilla">
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <button class="downlaod"
+                onclick="Del_Name(this.parentElement.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.innerHTML)">
+                Delete</button>
+            <button class="downlaod" onclick="showMenu()">Rename</button>
+        </div>
+        <a href="#" id="dirNameHref">
+            <div class="ffolder small cyan">
+                <a href="./listFiles.html">
+                    <span class="foldr" id="dirName" onclick="Fol_Name(this.innerHTML)">{{Name}}</span>
+                </a>
+            </div>
+        </a>
+    </div>
+</template>
+<!--END OF folders-->
+
+<!--Files-->
+<template id="plantilla1">
+    <a href="#">
+        <div id="files">
+            <img src="../Files/fileImg.png" width="50%" class="fileImg">
+            <span class="span" id="fileName">{{Name}}</span>
+        </div>
+    </a>
+</template>
+<!--END OF Files-->
+<!--Usr Name-->
+<template id="usrDetail">
+    <div class="dropdown">
+        <div class="dropdown-content1" style="top: -25px;">
+            <button class="downlaod">Log Out</button>
+        </div>
+        <div  style="cursor: pointer;">
+            <img src="{{UserImg}}" alt="">
+            <h3>{{UserName}} {{LastName}}</h3>
+        </div>
+    </div>
+
+</template>
+<!----END OF Usr Name---->
+
+<!----END OF Templates---->
+
+<body onload='inits()'>
+    <div class="wrapper">
+        <section class="side-menu">
+            <div id="mySidenav" class="sidenav">
+                <header class="header">Your Drive</header>
+                <a href="../index.html">Dashboard</a>
+                <a href="../Folders/folders.html">Folders</a>
+                <a href="../Files/files.html">Files</a>
+                <a href="../Tasks/tasks.html">Tasks</a>
+                <a href="#">Settings</a>
+            </div>
+        </section>
+
+        <div class="upper-section">
+            <section class="search-input">
+                <span class="material-icons" id="handle" onclick="showMobileMenu(event)">drag_handle</span>
+                <div class="search-container">
+                    <input type="text" placeholder="Search.." name="search">
+                </div>
+                <div class="icon-mail">
+                    <ion-icon name="mail-outline" class="mail"></ion-icon>
+                    <ion-icon name="person-add-sharp" class="mail"></ion-icon>
+                </div>
+                <div class="time">
+                    <h2 id="tim">Today</h2>
+                    <h3 id="date">Today</h3>
+                </div>
+            </section>
+
+            <div id='menuSmall' class='mobile' onclick="hideMobileMenu(event)">
+                <div id="menuContainer">
+                    <div><a href="#">Dashboard</a></div>
+                    <div><a href="./Folders/folders.html">Folders</a></div>
+                    <div><a href="./Files/files.html">Files</a></div>
+                    <div><a href="./Tasks/tasks.html">Tasks</a> </div>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div style="width: 100%;">
+                    <section class="recentFolders">
+                        <div class="folder-container" id="FolderName">
+                            <h3 class="title" id="tileidH3">YOUR FOLDERS</h3>
+                        </div>
+                        <div class="folders" id='myFolders' style="display: flex;flex-wrap: wrap;"> </div>
+                        <div class="folders" id='myFiles' style="margin-top: 30px;"> </div>
+                    </section>
+                </div>
+
+                <div class="tasks" id="tasks">
+                    <section class="task">
+                        <div class="btn">
+                            <div class="btntx" onclick="showMenu()">
+                                <ion-icon name="add-outline"></ion-icon>
+                                <h2 class="btnh2">Add New Folder</h2>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <div class="btntx" onclick="uploadFile()">
+                                <ion-icon name="cloud-upload-outline"></ion-icon>
+                                <h2 class="btnh2">Upload a Folder</h2>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Create Folder-->
+    <div id="createBlur" onclick="hideMenu(event)">
+        <div id="createEvent">
+            <div class="wrapper1" id="wrapper">
+                <section class="form signup">
+                    <header>Create a new Folder</header>
+                    <form action="#" autocomplete="off">
+                        <div class="name-details">
+                            <div class="field input">
+                                <div class="errortxt" id="errortxt">Write a Folder Name</div>
+                                <label>Folder Name</label>
+                                <input type="text" placeholder="Folder Name" id="fname" required>
+                            </div>
+                        </div>
+                        <div class="field button">
+                            <input type="submit" id="createFol" value="Create Now">
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--End of Create Folder-->
+
+    <!--Upload Folder-->
+    <div id="createBlur1" onclick="hideFile(event)">
+        <div id="createEvent1">
+            <div class="wrapper1" id="wrapper">
+                <section class="form signup">
+                    <header>Upload Folder</header>
+                    <form action="/folders/folders.html" method="post" enctype="multipart/form-data">
+                        <div class="name-details">
+                            <div class="field input">
+                                <label>Select A Folder</label>
+                                <input type="file" class="file" name="sampleFile" id="folders" required webkitdirectory>
+                                <div class="field button">
+                                    <input type="submit" id="sendNow" value="Upload Now">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--End of Upload Folder-->
+</body>
+
+<style>
+    #createBlur1 {
+        display: none;
+        background-color: rgba(200, 200, 200, 0.5);
+        backdrop-filter: saturate(200%) blur(5px);
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 10;
+        transition: opacity 0.25s ease;
+    }
+
+    #createEvent1 {
+        flex-direction: column;
+        max-width: 300px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+        transform: translateX(-250%);
+        transition: transform 0.5s ease;
+        will-change: transform;
+        z-index: 1000;
+    }
+
+    .errortxt {
+        display: none;
+        color: #721c24;
+        padding: 8px 10px;
+        text-align: center;
+        border-radius: 5px;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+    }
+
+    #FolderName {
+        height: 60px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        margin-bottom: -90px;
+    }
+</style>
+
+<script>
+    function inits() {
+        let refmyFolders = document.getElementById('myFolders')
+        let refPlantilla = document.getElementById('plantilla')
+        let html = ''
+
+        for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
+            html = html + refPlantilla.innerHTML
+                .replace(/{{Name}}/g, dir[cnt])
+        }
+        refmyFolders.innerHTML = html
+    }
+</script>
+
+</html>

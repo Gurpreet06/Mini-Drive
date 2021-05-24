@@ -1,0 +1,34 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "Servidor base",
+  "keywords": [],
+  "author": "Gurpreet-Singh <gurpreet.2003vila@gmail.com>",
+  "homepage": "http://www.exemple.com/",
+  "private": true,
+  "dependencies": {
+    "express": "latest",
+    "express-fileupload": "^1.2.1",
+    "file-saver": "^2.0.5",
+    "find-parent-dir": "^0.3.0",
+    "forever": "^3.0.4",
+    "js-file-download": "^0.4.12",
+    "localStorage": "^1.0.4",
+    "md5": "latest",
+    "multer": "^1.4.2",
+    "node-localstorage": "^2.1.6",
+    "parent-dir": "0.0.3",
+    "supervisor": "latest"
+  },
+  "bundleDependencies": [],
+  "main": "./server.js",
+  "scripts": {
+    "start": "node ./server.js",
+    "foreverStart": "forever start ./server.js",
+    "foreverList": "forever list",
+    "foreverStop": "forever stop ./server.js",
+    "supervisor": "supervisor --extensions js,html,css --ignore .git,public/data,node_modules,jdb.json,jdb.json.tmp --ignore-symlinks node -- ./server.js",
+    "postinstall": ""
+  },
+  "license": "ISC"
+}

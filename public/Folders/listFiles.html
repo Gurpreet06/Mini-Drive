@@ -1,0 +1,299 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../FFolders-master/FFolders-master/css/ffolders.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!---CSS--->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/CreateFolder.css">
+    <!---JavaScript--->
+    <script src="../Javascript/time.js" defer></script>
+    <script src="../Javascript/mobile-menu.js"></script>
+    <script src="../data/UserData/userDir.js" defer></script>
+    <script src="../data/UserData/userFile.js" defer></script>
+    <script src="./createFolder.js" defer></script>
+    <script src="./uploadFol.js" defer></script>
+    <script src="../Javascript/downloadDirs.js"></script>
+    <script src="../Javascript/deleteDirs.js" defer></script>
+    <title>File Manager</title>
+</head>
+
+<!----Templates---->
+<!--folders-->
+<template id="plantilla">
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <button class="downlaod"
+                onclick="Del_Name(this.parentElement.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.innerHTML)">
+                Delete</button>
+            <button class="downlaod">Rename</button>
+        </div>
+
+        <a href="#" id="dirNameHref">
+            <div class="ffolder small cyan">
+                <a href="#">
+                    <span class="foldr" id="dirName" onclick="Fol_Name(this.innerHTML)">{{Name}}</span>
+                </a>
+            </div>
+        </a>
+    </div>
+</template>
+<!--END OF folders-->
+<!--Usr Name-->
+<template id="usrDetail">
+    <div class="dropdown">
+        <div class="dropdown-content1" style="top: -25px;">
+            <button class="downlaod">Log Out</button>
+        </div>
+        <div  style="cursor: pointer;">
+            <img src="{{UserImg}}" alt="">
+            <h3>{{UserName}} {{LastName}}</h3>
+        </div>
+    </div>
+
+</template>
+<!----END OF Usr Name---->
+
+<!--Files-->
+<template id="plantilla1">
+    <div class="dropdown">
+        <div class="dropdown-content1">
+            <form action="/download" method="get" enctype="multipart/form-data">
+                <button class="downlaod"
+                    onclick="get_Name(this.parentElement.parentElement.parentElement.lastElementChild.lastElementChild.lastElementChild.innerHTML)">Download</button>
+            </form>
+            <button class="downlaod" id="dlllll"
+                onclick="Del_Name(this.parentElement.parentElement.lastElementChild.lastElementChild.lastElementChild.innerHTML)">
+                Delete</button>
+            <button class="downlaod">Rename</button>
+        </div>
+        <a href="#">
+            <div id="files">
+                <img src="../Files/fileImg.png" width="50%" class="fileImg">
+                <span class="span" id="fileName">{{Name}}</span>
+            </div>
+        </a>
+    </div>
+</template>
+<!--END OF Files-->
+
+<!----END OF Templates---->
+
+<body onload='init()'>
+    <div class="wrapper">
+        <section class="side-menu">
+            <div id="mySidenav" class="sidenav">
+                <header class="header">Your Drive</header>
+                <a href="../index.html">Dashboard</a>
+                <a href="../Folders/folders.html">Folders</a>
+                <a href="../Files/files.html">Files</a>
+                <a href="../Tasks/tasks.html">Tasks</a>
+                <a href="#">Settings</a>
+            </div>
+            <div class="usrSecttion" id="usrSection"> </div>
+        </section>
+
+        <div class="upper-section">
+            <section class="search-input">
+                <span class="material-icons" id="handle" onclick="showMobileMenu(event)">drag_handle</span>
+                <div class="search-container">
+                    <input type="text" placeholder="Search.." name="search">
+                </div>
+                <div class="icon-mail">
+                    <ion-icon name="mail-outline" class="mail"></ion-icon>
+                    <ion-icon name="person-add-sharp" class="mail"></ion-icon>
+                </div>
+                <div class="time">
+                    <h2 id="tim">Today</h2>
+                    <h3 id="date">Today</h3>
+                </div>
+            </section>
+
+            <div id='menuSmall' class='mobile' onclick="hideMobileMenu(event)">
+                <div id="menuContainer">
+                    <div><a href="#">Dashboard</a></div>
+                    <div><a href="./Folders/folders.html">Folders</a></div>
+                    <div><a href="./Files/files.html">Files</a></div>
+                    <div><a href="./Tasks/tasks.html">Tasks</a> </div>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div style="width: 100%;">
+                    <section class="recentFolders">
+                        <div class="folder-container" id="FolderName">
+                        </div>
+
+                        <div class="folders" id='myFolders' style="display: flex;"> </div>
+                        <div class="folders" id='myFiles' style="margin-top: 30px;display: flex;"> </div>
+                    </section>
+                </div>
+                <div class="tasks" id="tasks">
+                    <section class="task">
+                        <div class="btn">
+                            <div class="btntx" onclick="showMenu()">
+                                <ion-icon name="add-outline"></ion-icon>
+                                <h2 class="btnh2">Add New Folder</h2>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <div class="btntx" onclick="fileUploder()">
+                                <ion-icon name="add-outline"></ion-icon>
+                                <h2 class="btnh2">Add New File</h2>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Create Folder-->
+    <div id="createBlur" onclick="hideMenu(event)">
+        <div id="createEvent">
+            <div class="wrapper1" id="wrapper">
+                <section class="form signup">
+                    <header>Create a new Folder</header>
+                    <form action="#" autocomplete="off">
+                        <div class="name-details">
+                            <div class="field input">
+                                <div class="errortxt" id="errortxt">Write a Folder Name</div>
+                                <label>Folder Name</label>
+                                <input type="text" placeholder="Folder Name" id="fname" required>
+                            </div>
+                        </div>
+                        <div class="field button">
+                            <input type="submit" id="createFol" value="Create Now">
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--End of Create Folder-->
+    <!--Create File-->
+    <div id="createBlur1" onclick="fileUploderHide(event)">
+        <div id="createEvent1">
+            <div class="wrapper1" id="wrapper">
+                <section class="form signup">
+                    <header>Create a new File</header>
+                    <form action="#" autocomplete="off">
+                        <div class="name-details">
+                            <div class="field input">
+                                <div class="errortxt" id="errortxt">Write a File Name</div>
+                                <label>File Name</label>
+                                <input type="text" placeholder="File Name with Extension" id="fileNameInput" required>
+                            </div>
+                        </div>
+                        <div class="field button">
+                            <input type="submit" id="createFile" value="Create Now">
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--End of Create File-->
+</body>
+
+<script>
+    function init() {
+        let refPlantilla = document.getElementById('plantilla')
+        let reffolders = document.getElementById('myFolders')
+        let html = ''
+
+        for (cnt = 0; cnt < userDir.length; cnt = cnt + 1) {
+            html = html + refPlantilla.innerHTML
+                .replace(/{{Name}}/g, userDir[cnt])
+        }
+        reffolders.innerHTML = html
+
+        let refPlantilla1 = document.getElementById('plantilla1')
+        let reffolders1 = document.getElementById('myFiles')
+        let html1 = ''
+
+        for (cnt = 0; cnt < userFile.length; cnt = cnt + 1) {
+            html1 = html1 + refPlantilla1.innerHTML
+                .replace(/{{Name}}/g, userFile[cnt])
+        }
+        reffolders1.innerHTML = html1
+
+
+        let events = sessionStorage.getItem('eventos')
+        let title = []
+        if (events) {
+            title = JSON.parse(events)
+        }
+
+        for (let cnt = 0; cnt < title.length; cnt = cnt + 1) {
+            h(title[cnt])
+        }
+
+        let usrTemp = document.getElementById('usrDetail')
+        let usrSection = document.getElementById('usrSection')
+        let temH = ''
+
+        for (cnt = 0; cnt < usrFile.length; cnt = cnt + 1) {
+            if (localStorage.getItem('usrIdToken') == usrFile[cnt].id) {
+                temH = temH + usrTemp.innerHTML
+                    .replace(/{{UserName}}/g, usrFile[cnt].nom)
+                    .replace(/{{LastName}}/g, usrFile[cnt].cognom)
+                    .replace(/{{UserImg}}/g, usrFile[cnt].image)
+
+            }
+        }
+        usrSection.innerHTML = temH
+    }
+</script>
+
+<style>
+    #createBlur1 {
+        display: none;
+        background-color: rgba(200, 200, 200, 0.5);
+        backdrop-filter: saturate(200%) blur(5px);
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 10;
+        transition: opacity 0.25s ease;
+    }
+
+    #createEvent1 {
+        flex-direction: column;
+        max-width: 300px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+        transform: translateX(-250%);
+        transition: transform 0.5s ease;
+        will-change: transform;
+        z-index: 1000;
+    }
+
+    .errortxt {
+        display: none;
+        color: #721c24;
+        padding: 8px 10px;
+        text-align: center;
+        border-radius: 5px;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        margin-bottom: -99px;
+    }
+</style>
+
+</html>
