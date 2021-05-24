@@ -56,7 +56,7 @@
         <div class="dropdown-content1" style="top: -25px;">
             <button class="downlaod">Log Out</button>
         </div>
-        <div  style="cursor: pointer;">
+        <div style="cursor: pointer;">
             <img src="{{UserImg}}" alt="">
             <h3>{{UserName}} {{LastName}}</h3>
         </div>
@@ -82,7 +82,8 @@
 
         <div class="upper-section">
             <section class="search-input">
-                <span class="material-icons" id="handle" onclick="showMobileMenu(event)">drag_handle</span>
+                <span class="material-icons threeDot" id="threeDot"
+                    onclick="setDrawer('drawer', true)">drag_handle</span>
                 <div class="search-container">
                     <input type="text" placeholder="Search.." name="search">
                 </div>
@@ -95,15 +96,16 @@
                     <h3 id="date">Today</h3>
                 </div>
             </section>
-
-            <div id='menuSmall' class='mobile' onclick="hideMobileMenu(event)">
-                <div id="menuContainer">
-                    <div><a href="#">Dashboard</a></div>
-                    <div><a href="./Folders/folders.html">Folders</a></div>
-                    <div><a href="./Files/files.html">Files</a></div>
-                    <div><a href="./Tasks/tasks.html">Tasks</a> </div>
+            <!----MOBIL CONTENT-->
+            <div id="drawer" onclick="setDrawer('drawer', false, event)" class="drawer">
+                <div class="drawerSide" id="drawerSide">
+                    <div><a href="../index.html">Dashboard</a></div>
+                    <div><a href="../Folders/folders.html">Folders</a></div>
+                    <div><a href="../Files/files.html">Files</a></div>
+                    <div><a href="../Tasks/tasks.html">Tasks</a> </div>
                 </div>
             </div>
+            <!----End of MOBIL CONTENT-->
 
             <div class="project-row">
                 <div style="width: 100%;">

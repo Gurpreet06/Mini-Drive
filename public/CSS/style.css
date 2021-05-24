@@ -90,6 +90,9 @@ body{
         flex-wrap: wrap;
     }
 
+    #threeDot{
+        display: block;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -104,7 +107,9 @@ body{
 }
 /* End of side menu */
 
-
+.threeDot{
+    display: none;
+}
 
 .upper-section{
     width: 100%;
@@ -305,35 +310,34 @@ input[type=text] {
 }
 
 /* END of  Files */
-#menuSmall {
-    background-color: rgba(200, 200, 200, 0.5);
-    backdrop-filter: saturate(200%) blur(5px);
+
+/* Menu */
+.drawer {
     display: none;
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 10;
+    background-color: rgb(100, 100, 100, 0.75);
+    backdrop-filter: blur(2px) saturate(200%);
+    bottom: 0;
+    filter: blud(3px) saturate(200%);
+    left: 0;
     opacity: 0;
-    transition: opacity 0.25s ease;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
 }
-#menuContainer {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+
+.drawer>.drawerSide {
     background-color: white;
     height: 100%;
-    position: absolute;
-    left: 0px;
-    overflow: hidden;
-    top: 0;
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-    width: 75%;
-    will-change: transform;
-    z-index: 1000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: translate3d(-251px, 0, 0);
+    transition: transform 0.3s ease;
+    width: 250px;
 }
-#menuSmall > #menuContainer > div {
+
+#drawer>#drawerSide>div {
     border-bottom: 1px solid lightgrey;
     padding: 0 2em;
     height: 64px;
@@ -345,15 +349,18 @@ input[type=text] {
     margin-right: auto;
     margin-top: 20px;
 }
-#menuSmall > #menuContainer > div:last-child {
+
+#drawer>#drawerSide>div:last-child {
     margin-bottom: 10px;
 }
-#menuSmall > #menuContainer > div > a {
+
+#drawer>#drawerSide>div>a {
     color: black;
     text-decoration: none;
     font-size: 17px;
-    
+
 }
-#menuSmall > #menuContainer > div > a:visited {
+
+#drawer>#drawerSide>div>a:visited {
     color: black;
 }
