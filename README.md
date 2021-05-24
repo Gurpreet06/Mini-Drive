@@ -4,7 +4,7 @@ Mini drive is a web application that allows us to upload folders, files and imag
 
 # Important!
 
-Do not use this software for commercial purposes
+Do not use this web application for commercial purposes
 
 ## Design
 
