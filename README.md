@@ -4,7 +4,7 @@ Mini drive is a web application that allows us to upload folders, files and imag
 
 # Important!
 
-Do not use this software for commercial purposes
+Do not use this web application for commercial purposes
 
 ## Design
 
@@ -29,17 +29,24 @@ npm install
 npm start
 ```
 
+### Run supervised server
+
+Watch server for changes and restarts it if necessary
+
+```
+npm run supervisor
+```
 
 ## Captures
 
-Templates
+Home Page
 
 ![Photos](public/Images/Preview0.JPG)
 
-Templates
+Folders Page
 
 ![Photos](public/Images/Preview1.JPG)
 
-Templates
+Task Manager
 
 ![Photos](public/Images/Preview2.JPG)
