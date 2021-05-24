@@ -32,14 +32,14 @@ npm start
 
 ## Captures
 
-Templates
+Home Page
 
 ![Photos](public/Images/Preview0.JPG)
 
-Templates
+Folders Page
 
 ![Photos](public/Images/Preview1.JPG)
 
-Templates
+Task Manager
 
 ![Photos](public/Images/Preview2.JPG)
