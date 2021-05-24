@@ -29,6 +29,13 @@ npm install
 npm start
 ```
 
+### Run supervised server
+
+Watch server for changes and restarts it if necessary
+
+```
+npm run supervisor
+```
 
 ## Captures
 
