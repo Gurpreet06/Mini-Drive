@@ -1,6 +1,6 @@
 ## Mini Drive
 
-Mini drive is a web application that allows us to upload folders, files and images, we can also delete files or folders. I also created a task manager that is implemented with this mini drive where we can create our daily tasks, this web application is built with Html, css, JavaScript and Nodejs.
+Mini drive is a web application that allows us to upload folders, files and images, where we can rename and delete files or folders. I also created a task manager that is implemented with this mini drive where we can create our daily tasks, this web application is built with Html, css, JavaScript and Nodejs.
 
 # Important!
 
