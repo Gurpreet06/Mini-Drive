@@ -1,4 +1,2 @@
 
-let userDir =[
-  "Singh"
-]
+let userDir =[]

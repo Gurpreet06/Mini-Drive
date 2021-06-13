@@ -1,4 +1,4 @@
 
 let dir =[
-  "Gurpreet-Singh"
+  "Gurpreet"
 ]
