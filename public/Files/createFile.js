@@ -73,6 +73,34 @@ async function createServerFolder(dir, name) {
     }
 }
 
+function inits() {
+    let refmyfiles = document.getElementById('myfiles')
+    let refPlantilla = document.getElementById('plantilla')
+    let html = ''
+
+    for (cnt = 0; cnt < files.length; cnt = cnt + 1) {
+        html = html + refPlantilla.innerHTML
+            .replace(/{{Name}}/g, files[cnt])
+    }
+    refmyfiles.innerHTML = html
+
+    let usrTemp = document.getElementById('usrDetail')
+    let usrSection = document.getElementById('usrSection')
+    let temH = ''
+
+    for (cnt = 0; cnt < usrFile.length; cnt = cnt + 1) {
+        if (localStorage.getItem('usrIdToken') == usrFile[cnt].id) {
+            temH = temH + usrTemp.innerHTML
+                .replace(/{{UserName}}/g, usrFile[cnt].nom)
+                .replace(/{{LastName}}/g, usrFile[cnt].cognom)
+                .replace(/{{UserImg}}/g, usrFile[cnt].image)
+
+        }
+    }
+    usrSection.innerHTML = temH
+}
+
+
 /**
  * Queries the server with a 'POST' query
  * @param {url} server URL

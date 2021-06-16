@@ -13,8 +13,10 @@
     <!---CSS--->
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/CreateFolder.css">
+    <link rel="stylesheet" href="./folders.css">
     <!---JavaScript--->
     <script src="../Javascript/time.js" defer></script>
+    <script src="./createFiles.js" defer></script>
     <script src="../Javascript/mobile-menu.js"></script>
     <script src="../data/UserData/userDir.js" defer></script>
     <script src="../data/UserData/userFile.js" defer></script>
@@ -205,93 +207,7 @@
     <!--End of Create File-->
 </body>
 
-<script>
-    function init() {
-        let refPlantilla = document.getElementById('plantilla')
-        let reffolders = document.getElementById('myFolders')
-        let html = ''
-
-        for (cnt = 0; cnt < userDir.length; cnt = cnt + 1) {
-            html = html + refPlantilla.innerHTML
-                .replace(/{{Name}}/g, userDir[cnt])
-        }
-        reffolders.innerHTML = html
-
-        let refPlantilla1 = document.getElementById('plantilla1')
-        let reffolders1 = document.getElementById('myFiles')
-        let html1 = ''
-
-        for (cnt = 0; cnt < userFile.length; cnt = cnt + 1) {
-            html1 = html1 + refPlantilla1.innerHTML
-                .replace(/{{Name}}/g, userFile[cnt])
-        }
-        reffolders1.innerHTML = html1
-
-
-        let events = sessionStorage.getItem('eventos')
-        let title = []
-        if (events) {
-            title = JSON.parse(events)
-        }
-
-        for (let cnt = 0; cnt < title.length; cnt = cnt + 1) {
-            h(title[cnt])
-        }
-
-        let usrTemp = document.getElementById('usrDetail')
-        let usrSection = document.getElementById('usrSection')
-        let temH = ''
-
-        for (cnt = 0; cnt < usrFile.length; cnt = cnt + 1) {
-            if (localStorage.getItem('usrIdToken') == usrFile[cnt].id) {
-                temH = temH + usrTemp.innerHTML
-                    .replace(/{{UserName}}/g, usrFile[cnt].nom)
-                    .replace(/{{LastName}}/g, usrFile[cnt].cognom)
-                    .replace(/{{UserImg}}/g, usrFile[cnt].image)
-
-            }
-        }
-        usrSection.innerHTML = temH
-    }
-</script>
-
 <style>
-    #createBlur1 {
-        display: none;
-        background-color: rgba(200, 200, 200, 0.5);
-        backdrop-filter: saturate(200%) blur(5px);
-        position: fixed;
-        top: 0px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        z-index: 10;
-        transition: opacity 0.25s ease;
-    }
-
-    #createEvent1 {
-        flex-direction: column;
-        max-width: 300px;
-        margin: auto;
-        position: relative;
-        overflow: hidden;
-        transform: translateX(-250%);
-        transition: transform 0.5s ease;
-        will-change: transform;
-        z-index: 1000;
-    }
-
-    .errortxt {
-        display: none;
-        color: #721c24;
-        padding: 8px 10px;
-        text-align: center;
-        border-radius: 5px;
-        background: #f8d7da;
-        border: 1px solid #f5c6cb;
-        margin-bottom: 15px;
-    }
-
     .dropdown:hover .dropdown-content {
         display: block;
         margin-bottom: -99px;

@@ -13,6 +13,7 @@
     <!---CSS--->
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/CreateFolder.css">
+    <link rel="stylesheet" href="./file.css">
     <!---JavaScript--->
     <script src="../data/UserData/listFiles.js"></script>
     <script src="../Javascript/mobile-menu.js"></script>
@@ -184,96 +185,5 @@
     </div>
     <!--End of Upload File-->
 </body>
-
-<script>
-    function inits() {
-        let refmyfiles = document.getElementById('myfiles')
-        let refPlantilla = document.getElementById('plantilla')
-        let html = ''
-
-        for (cnt = 0; cnt < files.length; cnt = cnt + 1) {
-            html = html + refPlantilla.innerHTML
-                .replace(/{{Name}}/g, files[cnt])
-        }
-        refmyfiles.innerHTML = html
-
-        let usrTemp = document.getElementById('usrDetail')
-        let usrSection = document.getElementById('usrSection')
-        let temH = ''
-
-        for (cnt = 0; cnt < usrFile.length; cnt = cnt + 1) {
-            if (localStorage.getItem('usrIdToken') == usrFile[cnt].id) {
-                temH = temH + usrTemp.innerHTML
-                    .replace(/{{UserName}}/g, usrFile[cnt].nom)
-                    .replace(/{{LastName}}/g, usrFile[cnt].cognom)
-                    .replace(/{{UserImg}}/g, usrFile[cnt].image)
-
-            }
-        }
-        usrSection.innerHTML = temH
-    }
-</script>
-
-<style>
-    #createBlur1 {
-        display: none;
-        background-color: rgba(200, 200, 200, 0.5);
-        backdrop-filter: saturate(200%) blur(5px);
-        position: fixed;
-        top: 0px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        z-index: 10;
-        transition: opacity 0.25s ease;
-    }
-
-    #createEvent1 {
-        flex-direction: column;
-        max-width: 300px;
-        margin: auto;
-        position: relative;
-        overflow: hidden;
-        transform: translateX(-250%);
-        transition: transform 0.5s ease;
-        will-change: transform;
-        z-index: 1000;
-    }
-
-    #myfiles {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    #myfiles>a {
-        margin-bottom: 25px;
-    }
-
-    .span {
-        width: 90%;
-        text-align: center;
-        font-size: 12px;
-        padding: 2px 8px;
-        border-radius: 15px;
-        white-space: nowrap;
-        background-color: #06BAEE;
-        color: #FFF;
-    }
-
-    .fileImg {
-        width: 30%;
-    }
-
-    .errortxt {
-        display: none;
-        color: #721c24;
-        padding: 8px 10px;
-        text-align: center;
-        border-radius: 5px;
-        background: #f8d7da;
-        border: 1px solid #f5c6cb;
-        margin-bottom: 15px;
-    }
-</style>
 
 </html>
