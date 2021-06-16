@@ -1,4 +1,2 @@
 
-let userFile =[
-  "Gurpreet.txt"
-]
+let userFile =[]
