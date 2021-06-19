@@ -41,12 +41,12 @@ npm run supervisor
 
 Home Page
 
-![Photos](public/Images/Preview0.JPG)
+![Photos](public/Images/Previews0.JPG)
 
 Folders Page
 
-![Photos](public/Images/Preview1.JPG)
+![Photos](public/Images/Previews1.JPG)
 
 Task Manager
 
-![Photos](public/Images/Preview2.JPG)
+![Photos](public/Images/Previews2.JPG)
