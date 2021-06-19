@@ -29,19 +29,4 @@ function init() {
     for (let cnt = 0; cnt < title.length; cnt = cnt + 1) {
         h(title[cnt])
     }
-
-    let usrTemp = document.getElementById('usrDetail')
-    let usrSection = document.getElementById('usrSection')
-    let temH = ''
-
-    for (cnt = 0; cnt < usrFile.length; cnt = cnt + 1) {
-        if (localStorage.getItem('usrIdToken') == usrFile[cnt].id) {
-            temH = temH + usrTemp.innerHTML
-                .replace(/{{UserName}}/g, usrFile[cnt].nom)
-                .replace(/{{LastName}}/g, usrFile[cnt].cognom)
-                .replace(/{{UserImg}}/g, usrFile[cnt].image)
-
-        }
-    }
-    usrSection.innerHTML = temH
 }

@@ -10,33 +10,66 @@ function init() {
     let reffolders = document.getElementById('folders')
     let html = ''
 
-    for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
-        html = html + refPlantilla.innerHTML
-            .replace(/{{Name}}/g, dir[cnt])
-            .replace(/{{Link}}/g, 'http://localhost:8000/Folders/folders.html')
+    if (dir.length != 0) {
+        const n = 5 //get the first 3 items
+        const newArray = dir.slice(0, n)
+        for (cnt = 0; cnt < newArray.length; cnt = cnt + 1) {
+            html = html + refPlantilla.innerHTML
+                .replace(/{{Name}}/g, dir[cnt])
+                .replace(/{{Link}}/g, 'http://localhost:8000/Folders/folders.html')
+        }
+        reffolders.innerHTML = html
+    } else {
+        let viewFodlers = document.getElementById('viewFodlers')
+        viewFodlers.style.display = 'none'
+        reffolders.innerHTML = ` <a href="./Folders/folders.html">
+        <p class="noTasks">Ups, you don't have any folder created, create now...</p>
+    </a>`
     }
-    reffolders.innerHTML = html
+
 
     let reffile = document.getElementById('filess')
     let refsaveFiles = document.getElementById('saveFiles')
     let tempFile = ''
 
-    for (cnt = 0; cnt < files.length; cnt = cnt + 1) {
-        tempFile = tempFile + reffile.innerHTML
-            .replace(/{{Name}}/g, files[cnt])
+    if (files.length != 0) {
+        const n = 5 //get the first 3 items
+        const newArray = files.slice(0, n)
+        for (cnt = 0; cnt < newArray.length; cnt = cnt + 1) {
+            tempFile = tempFile + reffile.innerHTML
+                .replace(/{{Name}}/g, files[cnt])
+        }
+        refsaveFiles.innerHTML = tempFile
+    } else {
+        let viewFiles = document.getElementById('viewFiles')
+        viewFiles.style.display = 'none'
+        refsaveFiles.innerHTML = ` <a href="./Files/files.html">
+        <p class="noTasks">Ups, you don't have any file created, create now...</p>
+    </a>`
     }
-    refsaveFiles.innerHTML = tempFile
+
 
     let reftemp = document.getElementById('templt')
     let refTask = document.getElementById('pendTasks')
     let htmls = ''
 
-    for (cnt = 0; cnt < b.length; cnt = cnt + 1) {
-        htmls = htmls + reftemp.innerHTML
-            .replace(/{{name}}/g, b[cnt].name)
-            .replace(/{{des}}/g, b[cnt].des)
+    if (b.length != 0) {
+        const n = 4 //get the first 3 items
+        const newArray = b.slice(0, n)
+        for (cnt = 0; cnt < newArray.length; cnt = cnt + 1) {
+            htmls = htmls + reftemp.innerHTML
+                .replace(/{{name}}/g, b[cnt].name)
+                .replace(/{{des}}/g, b[cnt].des)
+        }
+        refTask.innerHTML = htmls
+    } else {
+        let viewMore = document.getElementById('viewMore')
+        viewMore.style.display = 'none'
+        refTask.innerHTML = ` <a href="./Tasks/tasks.html">
+        <p class="noTasks">Ups, you don't have any task created, create now...</p>
+    </a>`
     }
-    refTask.innerHTML = htmls
+
 }
 
 //Show Add event template
@@ -96,7 +129,7 @@ async function wait(time) {
 }
 
 // Delte events
-function delteEvents() {
-    let y = document.getElementById('element')
+function delteEvents(elementId) {
+    let y = elementId.parentElement
     y.parentElement.removeChild(y)
 }

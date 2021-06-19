@@ -60,20 +60,6 @@
     </a>
 </template>
 <!--END OF Files-->
-<!--Usr Name-->
-<template id="usrDetail">
-    <div class="dropdown">
-        <div class="dropdown-content1" style="top: -25px;">
-            <button class="downlaod">Log Out</button>
-        </div>
-        <div style="cursor: pointer;">
-            <img src="{{UserImg}}" alt="">
-            <h3>{{UserName}} {{LastName}}</h3>
-        </div>
-    </div>
-
-</template>
-<!----END OF Usr Name---->
 
 <!----END OF Templates---->
 
@@ -209,15 +195,19 @@
 
 <script>
     function inits() {
+
         let refmyFolders = document.getElementById('myFolders')
         let refPlantilla = document.getElementById('plantilla')
         let html = ''
-
-        for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
-            html = html + refPlantilla.innerHTML
-                .replace(/{{Name}}/g, dir[cnt])
+        if (dir.length != 0) {
+            for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
+                html = html + refPlantilla.innerHTML
+                    .replace(/{{Name}}/g, dir[cnt])
+            }
+            refmyFolders.innerHTML = html
+        } else {
+            refmyFolders.innerHTML = `<p class="noTasks">Ups, no folder found...</p>`
         }
-        refmyFolders.innerHTML = html
     }
 </script>
 

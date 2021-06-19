@@ -41,9 +41,10 @@
         <div class="eleinfo">
             <h2 class="eleh2">{{name}}</h2>
             <p class="elep">{{des}}</p>
+            <p class="elep" style="display: none;">{{id}}</p>
         </div>
         <div>
-            <ion-icon name="close-outline" class="cancel-task" onclick="delteEvents()"></ion-icon>
+            <ion-icon name="close-outline" class="cancel-task" onclick="delteEvents(this.parentElement)"></ion-icon>
         </div>
     </div>
 </template>
@@ -59,21 +60,6 @@
     </a>
 </template>
 <!--END OF Files-->
-
-<!--Usr Name-->
-<template id="usrDetail">
-    <div class="dropdown">
-        <div class="dropdown-content1" style="top: -25px;">
-            <button class="downlaod" onclick="location.reload(), localStorage.clear()">Log Out</button>
-        </div>
-        <div style="cursor: pointer;">
-            <img src="{{UserImg}}" alt="">
-            <h3>{{UserName}} {{LastName}}</h3>
-        </div>
-    </div>
-
-</template>
-<!----END OF Usr Name---->
 
 <body onload='init()'>
     <div class="wrapper">
@@ -122,6 +108,11 @@
                             <h3>RECENT FOLDERS</h3>
                         </div>
                         <div class="folders" id="folders"> </div>
+                        <div>
+                            <a href="./Folders/folders.html">
+                                <p class="viewMore" id='viewFodlers'>View All Folders...</p>
+                            </a>
+                        </div>
                     </section>
 
                     <section class="projects">
@@ -129,6 +120,11 @@
                             <h3>RECENT FILES</h3>
                         </div>
                         <div class="folders" id="saveFiles"> </div>
+                        <div>
+                            <a href="./Files/files.html">
+                                <p class="viewMore" id='viewFiles'>View All Files...</p>
+                            </a>
+                        </div>
                     </section>
                 </div>
 
@@ -138,6 +134,11 @@
                             <h3>YOUR TASKS</h3>
                         </div>
                         <div id="pendTasks"> </div>
+                        <div>
+                            <a href="./Tasks/tasks.html">
+                                <p class="viewMore" id='viewMore'>View More Tasks...</p>
+                            </a>
+                        </div>
                     </section>
                 </div>
             </div>

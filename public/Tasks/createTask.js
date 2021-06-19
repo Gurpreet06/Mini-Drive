@@ -14,27 +14,20 @@ function inits() {
     let refTask = document.getElementById('taks')
     let html = ''
 
-    for (cnt = 0; cnt < b.length; cnt = cnt + 1) {
-        html = html + refPlantilla.innerHTML
-            .replace(/{{Name}}/g, b[cnt].name)
-            .replace(/{{des}}/g, b[cnt].des)
-    }
-    refTask.innerHTML = html
-
-    let usrTemp = document.getElementById('usrDetail')
-    let usrSection = document.getElementById('usrSection')
-    let temH = ''
-
-    for (cnt = 0; cnt < usrFile.length; cnt = cnt + 1) {
-        if (localStorage.getItem('usrIdToken') == usrFile[cnt].id) {
-            temH = temH + usrTemp.innerHTML
-                .replace(/{{UserName}}/g, usrFile[cnt].nom)
-                .replace(/{{LastName}}/g, usrFile[cnt].cognom)
-                .replace(/{{UserImg}}/g, usrFile[cnt].image)
-
+    if (b.length != 0) {
+        for (cnt = 0; cnt < b.length; cnt = cnt + 1) {
+            html = html + refPlantilla.innerHTML
+                .replace(/{{Name}}/g, b[cnt].name)
+                .replace(/{{des}}/g, b[cnt].des)
+                .replace(/{{id}}/g, b[cnt].id)
         }
+        refTask.innerHTML = html
+    } else {
+        refTask.innerHTML = ` <a href="./Tasks/tasks.html">
+        <p class="noTasks">Ups, you don't have any tasks created...</p>
+    </a>`
     }
-    usrSection.innerHTML = temH
+
 }
 
 //Show Add event template
@@ -84,7 +77,7 @@ async function hideMenu(evt) {
 }
 
 
-// Create Folders
+// Create Tasks
 function createTask(Name, des) {
     reftaks.innerHTML += `
     <div class="element" id="element">
@@ -179,14 +172,9 @@ async function wait(time) {
 
 
 // Delte events
-function delteEvents() {
-    let y = document.getElementById('element')
+function delteEvents(elementDiv, elementId) {
+    let y = elementDiv.parentElement
     y.parentElement.removeChild(y)
 
-    for (cnt = 0; cnt < b.length; cnt = cnt + 1) {
-        b.splice(0, 1)
-    }
+    console.log(elementId)
 }
-
-
-

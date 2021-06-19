@@ -30,27 +30,16 @@
         <div class="eleinfo">
             <h2 class="eleh2" id=taskName>{{Name}}</h2>
             <p class="elep">{{des}}</p>
+            <p class="elep" style="display: none;">{{id}}</p>
         </div>
         <div>
-            <ion-icon name="close-outline" class="cancel-task" onclick="delteEvents()"></ion-icon>
+            <ion-icon name="close-outline" class="cancel-task"
+                onclick="delteEvents(this.parentElement, this.parentElement.parentElement.firstElementChild.lastElementChild.innerText)">
+            </ion-icon>
         </div>
     </div>
 </template>
 <!--END OF Tasks-->
-<!--Usr Name-->
-<template id="usrDetail">
-    <div class="dropdown">
-        <div class="dropdown-content1" style="top: -25px;">
-            <button class="downlaod">Log Out</button>
-        </div>
-        <div style="cursor: pointer;">
-            <img src="{{UserImg}}" alt="">
-            <h3>{{UserName}} {{LastName}}</h3>
-        </div>
-    </div>
-
-</template>
-<!----END OF Usr Name---->
 
 <!----END OF Templates---->
 
