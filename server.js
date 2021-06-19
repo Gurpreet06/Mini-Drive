@@ -1,7 +1,6 @@
 let express = require('express')
 var fs = require('fs')
 const upload = require('express-fileupload')
-const { Server } = require('http')
 
 let port = 8000
 let app = express()
