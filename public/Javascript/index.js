@@ -105,6 +105,24 @@ async function serachBar(searchValue) {
                     .replaceAll(/{{File}}/g, 'File')
             }
         }
+
+        for (cnt = 0; cnt < b.length; cnt = cnt + 1) {
+            let TaskVal = b[cnt]
+            if (TaskVal.name.indexOf(searchValue) != -1 || TaskVal.des.indexOf(searchValue) != -1) {
+                html = html + template
+                    .replaceAll(/{{name}}/g, b[cnt].name)
+                    .replaceAll(/{{File}}/g, 'Task')
+            }
+        }
+
+        for (cnt = 0; cnt < b.length; cnt = cnt + 1) {
+            let TaskVal = b[cnt]
+            if (TaskVal.des.indexOf(searchValue) != -1) {
+                html = html + template
+                    .replaceAll(/{{name}}/g, b[cnt].des)
+                    .replaceAll(/{{File}}/g, 'Task Desc')
+            }
+        }
     }
 
     Searchwrapper.style.display = 'block'
