@@ -73,8 +73,9 @@ function init() {
 }
 
 let seachrBarTemp = ` <div class="searchInfo">
-<div>
+<div class='searchRst'>
     <h5 class="usrName">{{name}}</h5>
+    <p class='fileType'>Type: {{File}}</p>
 </div>
 </div>`
 
@@ -88,12 +89,15 @@ async function serachBar(searchValue) {
         if (shValue.indexOf(searchValue) != 1) {
             html = html + template
                 .replaceAll(/{{name}}/g, dir[cnt])
-
-            console.log(shValue)
+                .replaceAll(/{{File}}/g, 'Folder')
         }
     }
 
-    //Searchwrapper.innerHTML = html
+    Searchwrapper.style.display = 'block'
+    Searchwrapper.innerHTML = html
+    if (searchValue == '') {
+        Searchwrapper.style.display = 'none'
+    }
 }
 
 //Show Add event template

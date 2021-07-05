@@ -406,3 +406,13 @@ input[type="text"] {
   padding: 9px;
   border-bottom: 1px solid #e6e6e6;
 }
+
+.searchRst {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fileType {
+  font-size: 12px;
+  color: darkgrey;
+}
