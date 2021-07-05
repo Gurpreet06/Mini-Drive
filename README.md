@@ -39,6 +39,10 @@ Home Page
 
 ![Photos](public/Images/Previews0.JPG)
 
+Search Bar
+
+![Photos](public/Images/Previews3.JPG)
+
 Folders Page
 
 ![Photos](public/Images/Previews1.JPG)
