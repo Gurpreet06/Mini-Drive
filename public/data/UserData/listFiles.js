@@ -1,5 +1,4 @@
 
 let files =[
-  "Gurpreet.txt",
-  "k"
+  "Gurpreet.txt"
 ]

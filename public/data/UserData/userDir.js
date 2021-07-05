@@ -1,5 +1,4 @@
 
 let userDir =[
-  "Gurpreet",
-  "J"
+  "Gurpreet"
 ]

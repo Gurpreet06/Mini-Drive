@@ -1,5 +1,4 @@
 
 let userFile =[
-  "Gurpreet.txt",
-  "k"
+  "Gurpreet.txt"
 ]
