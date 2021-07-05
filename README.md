@@ -37,11 +37,7 @@ npm run supervisor
 
 Home Page
 
-![Photos](public/Images/Previews0.JPG)
-
-Search Bar
-
-![Photos](public/Images/Previews3.JPG)
+![Photos](public/Images/Previewss0.JPG)
 
 Folders Page
 
