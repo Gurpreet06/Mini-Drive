@@ -84,10 +84,8 @@ let rstFound = `<p class='noFileType'>No File Found</p>`
 async function serachBar(searchValue) {
     let Searchwrapper = document.getElementById('Searchwrapper')
     let html = ''
-    let ht = ''
 
     let template = seachrBarTemp
-    let rstNo = rstFound
 
     if (searchValue != '') {
         for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
@@ -111,7 +109,6 @@ async function serachBar(searchValue) {
 
     Searchwrapper.style.display = 'block'
     Searchwrapper.innerHTML = html
-    Searchwrapper.innerHTML = ht
     if (searchValue == '') {
         Searchwrapper.style.display = 'none'
     }
