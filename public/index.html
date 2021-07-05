@@ -89,14 +89,8 @@
                 <span class="material-icons threeDot" id="threeDot"
                     onclick="setDrawer('drawer', true)">drag_handle</span>
                 <div class="search-container">
-                    <input type="text" placeholder="Search.." name="search">
-                    <div class="Searchwrapper" id='Searchwrapper'>
-                        <div class="searchInfo">
-                                <div>
-                                    <h5 class="usrName">{{name}}</h5>
-                                </div>
-                        </div>
-                    </div>
+                    <input type="text" placeholder="Search.." name="search" onkeyup="serachBar(this.value)">
+                    <div class="Searchwrapper" id='Searchwrapper'> </div>
                 </div>
                 <div class="icon-mail">
                     <ion-icon name="mail-outline" class="mail"></ion-icon>

@@ -72,6 +72,30 @@ function init() {
 
 }
 
+let seachrBarTemp = ` <div class="searchInfo">
+<div>
+    <h5 class="usrName">{{name}}</h5>
+</div>
+</div>`
+
+async function serachBar(searchValue) {
+    let Searchwrapper = document.getElementById('Searchwrapper')
+    let html = ''
+
+    let template = seachrBarTemp
+    for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
+        let shValue = dir[cnt]
+        if (shValue.indexOf(searchValue) != 1) {
+            html = html + template
+                .replaceAll(/{{name}}/g, dir[cnt])
+
+            console.log(shValue)
+        }
+    }
+
+    //Searchwrapper.innerHTML = html
+}
+
 //Show Add event template
 async function showMenu() {
     // Stop body to do scroll and add blur affect to background 
