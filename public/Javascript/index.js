@@ -79,17 +79,24 @@ let seachrBarTemp = ` <div class="searchInfo">
 </div>
 </div>`
 
+let rstFound = `<p class='noFileType'>{{File}}</p>`
+
 async function serachBar(searchValue) {
     let Searchwrapper = document.getElementById('Searchwrapper')
     let html = ''
 
     let template = seachrBarTemp
+    let rstNo = rstFound
     for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
         let shValue = dir[cnt]
-        if (shValue.indexOf(searchValue) != 1) {
+        if (shValue.indexOf(searchValue) != -1) {
             html = html + template
                 .replaceAll(/{{name}}/g, dir[cnt])
                 .replaceAll(/{{File}}/g, 'Folder')
+        } else {
+            html = html + rstNo
+                .replaceAll(/{{name}}/g, '')
+                .replaceAll(/{{File}}/g, 'No File Found')
         }
     }
 
