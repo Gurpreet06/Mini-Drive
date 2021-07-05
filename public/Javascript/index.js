@@ -87,16 +87,31 @@ async function serachBar(searchValue) {
 
     let template = seachrBarTemp
     let rstNo = rstFound
-    for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
-        let shValue = dir[cnt]
-        if (shValue.indexOf(searchValue) != -1) {
-            html = html + template
-                .replaceAll(/{{name}}/g, dir[cnt])
-                .replaceAll(/{{File}}/g, 'Folder')
-        } else {
-            html = html + rstNo
-                .replaceAll(/{{name}}/g, '')
-                .replaceAll(/{{File}}/g, 'No File Found')
+    if (searchValue != '') {
+        for (cnt = 0; cnt < dir.length; cnt = cnt + 1) {
+            let FolValue = dir[cnt]
+            if (FolValue.indexOf(searchValue) != -1) {
+                html = html + template
+                    .replaceAll(/{{name}}/g, dir[cnt])
+                    .replaceAll(/{{File}}/g, 'Folder')
+            } else {
+                html = html + rstNo
+                    .replaceAll(/{{name}}/g, '')
+                    .replaceAll(/{{File}}/g, 'No File Found')
+            }
+        }
+
+        for (cnt = 0; cnt < files.length; cnt = cnt + 1) {
+            let FolValue = files[cnt]
+            if (FolValue.indexOf(searchValue) != -1) {
+                html = html + template
+                    .replaceAll(/{{name}}/g, files[cnt])
+                    .replaceAll(/{{File}}/g, 'File')
+            } else {
+                html = html + rstNo
+                    .replaceAll(/{{name}}/g, '')
+                    .replaceAll(/{{File}}/g, '')
+            }
         }
     }
 
