@@ -14,9 +14,9 @@ function getTime() {
     // Create Time
     let times = '';
     if (currntTime.getMinutes() < 10) {
-        times = currntTime.getHours() + ":" + "0" + currntTime.getMinutes();
+        times = currntTime.getHours() + ":" + "0" + currntTime.getMinutes()
     } else {
-        times = currntTime.getHours() + ":" + currntTime.getMinutes() + ":" + currntTime.getSeconds()
+        times = currntTime.getHours() + ":" + currntTime.getMinutes()
     }
 
     refTime.innerHTML = times
