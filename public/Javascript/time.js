@@ -9,16 +9,21 @@ let current = new Date()
 let time = current.getDate() + " " + months[current.getMonth()];
 refdate.innerHTML = time
 
-setInterval(function () {
+function getTime() {
+    let currntTime = new Date()
     // Create Time
     let times = '';
-    if (current.getMinutes() < 10) {
-        times = current.getHours() + ":" + "0" + current.getMinutes();
+    if (currntTime.getMinutes() < 10) {
+        times = currntTime.getHours() + ":" + "0" + currntTime.getMinutes();
     } else {
-        times = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds()
+        times = currntTime.getHours() + ":" + currntTime.getMinutes() + ":" + currntTime.getSeconds()
     }
 
     refTime.innerHTML = times
+}
+
+setInterval(() => {
+    getTime()
 }, 1000);
 
 
