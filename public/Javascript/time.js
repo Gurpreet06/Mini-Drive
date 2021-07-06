@@ -76,7 +76,7 @@ async function serachBar(searchValue) {
             if (TaskVal.des.indexOf(searchValue) != -1) {
                 html = html + template
                     .replaceAll(/{{name}}/g, b[cnt].des)
-                    .replaceAll(/{{File}}/g, 'Task Desc')
+                    .replaceAll(/{{File}}/g, 'Task Description')
             }
         }
     }
